@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from emailsending import views
 from django.http import HttpResponse
 from .python_robotcontroller.game import *
 from django.views.decorators.csrf import csrf_exempt
@@ -29,8 +30,6 @@ def start(request):
     if server == "0.0.0.0":
         tkintermessage("please enter a server address in the settings page")
     else:
-
-        client("start_sound",server,port)
         start_robot(server,port)
         return HttpResponse("")
 
@@ -69,3 +68,6 @@ def savesettings(request):
         client("test",server,port)
 
     return HttpResponse("")
+
+def Contact(request):
+    return redirect("/Contact")
