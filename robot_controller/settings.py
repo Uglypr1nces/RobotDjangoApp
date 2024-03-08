@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'first_app',
+    'main_controller',
     'emailsending'
 ]
 STATIC_URL = '/static/'
@@ -56,7 +56,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'first_project.urls'
+ROOT_URLCONF = 'robot_controller.urls'
 
 TEMPLATES = [
     {
@@ -74,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'first_project.wsgi.application'
+WSGI_APPLICATION = 'robot_controller.wsgi.application'
 
 
 # Database
