@@ -16,7 +16,6 @@ The Django Robot Controller project is a web-based application designed to provi
 - Django 3.x
 - Pygame 2.5.X
 - tkinter
-- [Django Channels](https://channels.readthedocs.io/)
 
 ## Setup
 1. Clone the repository:
