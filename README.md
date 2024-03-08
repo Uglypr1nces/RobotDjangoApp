@@ -3,7 +3,7 @@
 ## Overview
 The Django Robot Controller project is a web-based application designed to provide a user-friendly interface for controlling your robot. With support for controller input, this project allows you to effortlessly maneuver your robot and perform various actions remotely.
 
-![alt text](E:\Python\django\robot_controller_django\first_project\main_controller\static\a.jpg)
+![alt text](main_controller/static/a.jpg)
 
 ## Features
 - **Controller Support**: Seamlessly control your robot using game controllers for a more intuitive experience.
@@ -24,7 +24,7 @@ The Django Robot Controller project is a web-based application designed to provi
    git clone https://github.com/your-username/robot-controller-django.git
    cd robot-controller-django
 
- 2. Install Dependencies:
+2. Install Dependencies:
    ```bash
     pip install -r requirements.txt
 
@@ -32,9 +32,8 @@ The Django Robot Controller project is a web-based application designed to provi
    ```bash
    python manage.py runserver
 
-1. Run Server on the robot:
+4. Run Server on the robot:
    ```bash
    [needs to be added]
 
-1. Clone the repository:
-   ```bash  
+
