@@ -6,7 +6,7 @@ import json
 # Create your views here.
 
 def Contact(request):
-    return render(request, 'base.html')
+    return render(request, 'contact.html')
 
 def index(requet):
     return render(request, 'base.html')
