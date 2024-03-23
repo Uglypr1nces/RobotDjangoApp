@@ -20,7 +20,7 @@ The Django Robot Controller project is a web-based application designed to provi
 ## Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/robot-controller-django.git
+   git clone https://github.com/Uglypr1nces/robot-controller-django.git
    cd robot-controller-django
 
 2. Install Dependencies:

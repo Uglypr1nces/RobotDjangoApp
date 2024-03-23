@@ -15,4 +15,5 @@ urlpatterns = [
     path('shutdown/', views.shutdown, name='shutdown'),
     path('savesettings/',views.savesettings,name = "savesettings"),
     path('Contact/', views.Contact, name='Contact'),
+    path("sendmessage/",views.sendmessage,name = "sendmessage")
 ]

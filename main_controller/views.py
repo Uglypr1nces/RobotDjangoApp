@@ -71,3 +71,11 @@ def savesettings(request):
 
 def Contact(request):
     return redirect("/Contact")
+
+def sendmessage(request):
+    if request.method == 'POST':
+        data = json.loads(request.body.decode('utf-8'))
+        message = data.get('message')
+        print("sending message: " + message)
+        client("word"+message,server,port)
+    return HttpResponse("")

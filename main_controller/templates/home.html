@@ -29,6 +29,24 @@
         <button type="button" id="shutdownBtn">Shutdown</button>
     </form>
 
+    <h2>Robot Connection</h2>
+
+    <input type="text" id="message" name="message" placeholder="Enter a message">
+
+    <button onclick="sendmessage()">Send message</button>
+
+    <script>
+        function sendmessage() {
+            var message = document.getElementById("message").value;
+
+            // Use Ajax to send a request to the server when the button is clicked
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "{% url 'sendmessage' %}", true);
+            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhr.send(JSON.stringify({message: message }));
+        }
+    </script>
     
 
     <script>
