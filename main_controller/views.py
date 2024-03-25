@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from emailsending import views
+from .python_robotcontroller.video_reciever import start_video_server
 from django.http import HttpResponse
 from .python_robotcontroller.game import *
 from django.views.decorators.csrf import csrf_exempt
@@ -38,6 +39,7 @@ def camera(request):
         tkintermessage("please enter a server address in the settings page")
     else:
         print("opening camera..")
+        start_video_server()
         return HttpResponse("")
 
 def sound(request):
