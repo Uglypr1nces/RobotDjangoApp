@@ -6,31 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=7.0">
     <title>{% block title %}Robot Control Panel{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <div id="branding">
-                <h1><a href="{% url 'home' %}">Robot Control Panel</a></h1>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div id="branding">
+                    <h1><a href="{% url 'home' %}">Robot Control Panel</a></h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'information' %}">Information</a></li>
+                        <li><a href="{% url 'settings' %}">Settings</a></li>
+                        <a href="{% url 'emailsending:Contact' %}">Contact</a>
+                    </ul>
+                </nav>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'information' %}">Information</a></li>
-                    <li><a href="{% url 'settings' %}">Settings</a></li>
-                    <a href="{% url 'emailsending:Contact' %}">Contact</a>
-                </ul>
-            </nav>
-        </div>
-    </header>
+        </header>
 
-    <main>
-        <div class="container">
-            {% block content %}{% endblock %}
-        </div>
-    </main>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-</body>
+        <main>
+            <div class="container">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    </body>
 </html>
+
+

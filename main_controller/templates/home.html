@@ -3,14 +3,14 @@
 {% block content %}
     <title>home</title>
     <h1>Actions</h1>
-    
+
     <style>
         .pixelrobot {
             float: right;
-            width: 50%;
-            
+            width: 50%;          
           }
     </style>
+    
     <img class = "pixelrobot" src="{% static 'rbot.png' %}">
 
     <form action="{% url 'start' %}" method="post">
@@ -35,17 +35,36 @@
 
     <button onclick="sendmessage()">Send message</button>
 
-    <script>
-        function sendmessage() {
-            var message = document.getElementById("message").value;
+    <h1>controls</h1>
 
-            // Use Ajax to send a request to the server when the button is clicked
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "{% url 'sendmessage' %}", true);
-            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
-            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            xhr.send(JSON.stringify({message: message }));
-        }
+    <script>
+        document.addEventListener("keydown", function(event) {
+            if (event.keyCode === "w".charCodeAt(0)) {
+                window.alert("w has been pressed");
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "{% url 'forward' %}", true);
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
+                xhr.send();
+            }
+            if (event.keyCode === "s".charCodeAt(0)) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "{% url 'backward' %}", true);
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
+                xhr.send();
+            }
+            if (event.keyCode === "a".charCodeAt(0)) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "{% url 'left' %}", true);
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
+                xhr.send();
+            }
+            if (event.keyCode === "d".charCodeAt(0)) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "{% url 'right' %}", true);
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
+                xhr.send();
+            }
+        });
     </script>
     
 

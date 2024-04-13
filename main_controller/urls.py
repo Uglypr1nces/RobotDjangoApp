@@ -15,5 +15,9 @@ urlpatterns = [
     path('shutdown/', views.shutdown, name='shutdown'),
     path('savesettings/',views.savesettings,name = "savesettings"),
     path('Contact/', views.Contact, name='Contact'),
-    path("sendmessage/",views.sendmessage,name = "sendmessage")
+    path("sendmessage/",views.sendmessage,name = "sendmessage"),
+    path("forward/",views.forward,name = "forward"),
+    path("backward/",views.backward,name = "backward"),
+    path("left/",views.left,name = "left"),
+    path("right/",views.right,name = "right"),
 ]
