@@ -32,6 +32,16 @@
     <button onclick="sendmessage()">Send message</button>
 
     <script>
+        function sendmessage() {
+            var message = document.getElementById("message").value;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "{% url 'sendmessage' %}", true);
+            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send(message);
+        }
+    </script>
+    <script>
         document.body.addEventListener("keydown", (ev) => {
             if (ev.key === "w") {
                 var xhr = new XMLHttpRequest();

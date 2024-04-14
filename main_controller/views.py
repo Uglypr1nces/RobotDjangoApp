@@ -103,13 +103,10 @@ def Contact(request):
     return redirect("/Contact")
 
 def sendmessage(request):
-    if server == "0.0.0.0":
-        tkintermessage("Please enter a server address in the settings page")
+    if request.method == 'POST':
+        message = request.body.decode('utf-8')
+        print("Received message:", message)
+        return JsonResponse({'success': 'Message received successfully'})
+        client("word"+message, server, port)
     else:
-        start_robot(server, port)
-        if request.method == 'POST':
-            data = json.loads(request.body.decode('utf-8'))
-            message = data.get('message')
-            print("Sending message: " + message)
-            client("word"+message, server, port)
-    return HttpResponse("")
+        return JsonResponse({'error': 'Only POST requests are supported'}, status=405)
