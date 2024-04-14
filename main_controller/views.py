@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .python_robotcontroller.video_reciever import start_video_server
 from .python_robotcontroller.game import start_robot
@@ -28,14 +29,7 @@ def information(request):
 def settings(request):
     return render(request, 'settings.html')
 
-def start(request):
-    print(f"Starting robot at {server}:{port}...")
-    if server == "0.0.0.0":
-        tkintermessage("Please enter a server address in the settings page")
-    else:
-        start_robot(server, port)
-    return HttpResponse("")
-
+#robot movement
 def forward(request):
     client("forward", server, port)
     return HttpResponse("")
@@ -47,6 +41,26 @@ def left(request):
     return HttpResponse("")
 def right(request):
     client("right", server, port)
+    return HttpResponse("")
+def right(request):
+    client("right", server, port)
+    return HttpResponse("")
+
+#camera movement
+def camera_left(request):
+    client("camera_left", server, port)
+    return HttpResponse("")
+
+def camera_right(request):
+    client("camera_right", server, port)
+    return HttpResponse("")
+
+def camera_up(request):
+    client("camera_up", server, port)
+    return HttpResponse("")
+
+def camera_down(request):
+    client("camera_down", server, port)
     return HttpResponse("")
 
 def camera(request):
@@ -66,11 +80,7 @@ def sound(request):
     return HttpResponse("")
 
 def shutdown(request):
-    if server == "0.0.0.0":
-        tkintermessage("Please enter a server address in the settings page")
-    else:
-        print("Shutting down robot..")
-        client("over_sound", server, port)
+    client("over_sound", server, port)
     return HttpResponse("")
 
 def savesettings(request):

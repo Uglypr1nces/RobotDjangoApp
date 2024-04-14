@@ -9,7 +9,6 @@ urlpatterns = [
     path("home/",views.home,name = "home"),
     path("information/",views.information,name = "information"),
     path("settings/",views.settings,name = "settings"),
-    path('start/', views.start, name='start'),
     path('camera/', views.camera, name='camera'),
     path('sound/', views.sound, name='sound'),
     path('shutdown/', views.shutdown, name='shutdown'),
@@ -20,4 +19,8 @@ urlpatterns = [
     path("backward/",views.backward,name = "backward"),
     path("left/",views.left,name = "left"),
     path("right/",views.right,name = "right"),
+    path("camera_left/",views.camera_left,name = "camera_left"),
+    path("camera_right/",views.camera_right,name = "camera_right"),
+    path("camera_up/",views.camera_up,name = "camera_up"),
+    path("camera_down/",views.camera_down,name = "camera_down"),
 ]

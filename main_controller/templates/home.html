@@ -13,10 +13,6 @@
     
     <img class = "pixelrobot" src="{% static 'rbot.png' %}">
 
-    <form action="{% url 'start' %}" method="post">
-        <button type="button" id="startBtn">Start</button>
-    </form>
-
     <form action="{% url 'camera' %}" method="post">
         <button type="button" id="cameraBtn">Camera</button>
     </form>
@@ -35,38 +31,59 @@
 
     <button onclick="sendmessage()">Send message</button>
 
-    <h1>controls</h1>
-
     <script>
-        document.addEventListener("keydown", function(event) {
-            if (event.keyCode === "w".charCodeAt(0)) {
-                window.alert("w has been pressed");
+        document.body.addEventListener("keydown", (ev) => {
+            if (ev.key === "w") {
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", "{% url 'forward' %}", true);
                 xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
                 xhr.send();
             }
-            if (event.keyCode === "s".charCodeAt(0)) {
+       
+            if (ev.key === "s") {
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", "{% url 'backward' %}", true);
                 xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
                 xhr.send();
             }
-            if (event.keyCode === "a".charCodeAt(0)) {
+            if (ev.key === "a") {
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", "{% url 'left' %}", true);
                 xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
                 xhr.send();
             }
-            if (event.keyCode === "d".charCodeAt(0)) {
+            if (ev.key === "d") {
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", "{% url 'right' %}", true);
                 xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
                 xhr.send();
             }
+            if (ev.key === "e") {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "{% url 'camera_left' %}", true);
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
+                xhr.send();
+            }
+            if (ev.key === "q") {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "{% url 'camera_right' %}", true);
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
+                xhr.send();
+            }
+            if (ev.key === "r") {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "{% url 'camera_up' %}", true);
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
+                xhr.send();
+            }
+                if (ev.key === "f") {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "{% url 'camera_down' %}", true);
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
+                xhr.send();
+            }
         });
     </script>
-    
 
     <script>
         var buttons = ["startBtn", "cameraBtn", "soundBtn", "shutdownBtn"];
