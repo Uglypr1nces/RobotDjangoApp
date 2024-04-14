@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+
 {% load static %}
+
 {% block content %}
     <title>home</title>
     <h1>Actions</h1>
@@ -8,27 +10,30 @@
         .pixelrobot {
             float: right;
             width: 50%;          
-          }
+        }
     </style>
     
-    <img class = "pixelrobot" src="{% static 'rbot.png' %}">
+    <img class="pixelrobot" src="{% static 'rbot.png' %}">
 
+    <!-- Camera form -->
     <form action="{% url 'camera' %}" method="post">
         <button type="button" id="cameraBtn">Camera</button>
     </form>
 
+    <!-- Sound form -->
     <form action="{% url 'sound' %}" method="post">
         <button type="button" id="soundBtn">Sound</button>
     </form>
 
+    <!-- Shutdown form -->
     <form action="{% url 'shutdown' %}" method="post">
         <button type="button" id="shutdownBtn">Shutdown</button>
     </form>
 
-    <h2>Robot Connection</h2>
-
+    <!-- Message input -->
     <input type="text" id="message" name="message" placeholder="Enter a message">
 
+    <!-- Send message button -->
     <button onclick="sendmessage()">Send message</button>
 
     <script>
@@ -41,7 +46,9 @@
             xhr.send(message);
         }
     </script>
+
     <script>
+        // Keyboard event listener for robot movement
         document.body.addEventListener("keydown", (ev) => {
             if (ev.key === "w") {
                 var xhr = new XMLHttpRequest();
@@ -86,7 +93,7 @@
                 xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
                 xhr.send();
             }
-                if (ev.key === "f") {
+            if (ev.key === "f") {
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", "{% url 'camera_down' %}", true);
                 xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
@@ -96,6 +103,7 @@
     </script>
 
     <script>
+        // Button event listeners for robot movement and actions
         var buttons = ["startBtn", "cameraBtn", "soundBtn", "shutdownBtn"];
 
         buttons.forEach(function (btnId) {

@@ -12,11 +12,7 @@ import pygame
 port = 8001
 server = "0.0.0.0"
 
-def playsound(sound):
-    pygame.mixer.init()
-    pygame.mixer.music.load(f'{sound}.wav')
-    pygame.mixer.music.play()
-
+#pages
 def index(request):
     return render(request, 'home.html')
 
@@ -64,19 +60,15 @@ def camera_down(request):
     return HttpResponse("")
 
 def camera(request):
-    if server == "0.0.0.0":
-        tkintermessage("Please enter a server address in the settings page")
-    else:
-        print("Opening camera..")
-        start_video_server()
+    #start_video_server()   # I accidently broke the camera
+    print("Opening camera..")
     return HttpResponse("")
 
+#robot features
+
 def sound(request):
-    if server == "0.0.0.0":
-        tkintermessage("Please enter a server address in the settings page")
-    else:
-        print("Playing sound..")
-        client("alarm_sound", server, port)
+    print("Playing sound..")
+    client("alarm_sound", server, port)
     return HttpResponse("")
 
 def shutdown(request):
@@ -98,9 +90,6 @@ def savesettings(request):
             print(f"Cause of error: {e}")
 
     return HttpResponse("")
-
-def Contact(request):
-    return redirect("/Contact")
 
 def sendmessage(request):
     if request.method == 'POST':

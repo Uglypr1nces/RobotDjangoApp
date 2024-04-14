@@ -1,42 +1,46 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
 {% load static %}
-{%block content%}
-    <title>information</title>
+
+{% block content %}
+    <title>Information</title>
     <h1>Information</h1>
 
+    <section>
+        <h1>Robot Control Panel</h1>
+        <p>Control the movement of a robot by adjusting the angles of its motors using sliders on the settings.</p>
+    </section>
 
-    <p>Robot Control Panel is a web application that allows the user to control the movement of a robot by adjusting the angles of its motors. The user can control the robot by adjusting the angles of its motors using the sliders on the settings
-        <section>
-            <h1>Real-Time Interaction with Pygame and Robot</h1>
-            <p>Control a virtual 2D character using Pygame and witness corresponding movements in a connected physical robot.</p>
-        </section>
-    
-        <section>
-            <h2>User-Friendly Interface</h2>
-            <p>Simple and intuitive controls for an engaging user experience.</p>
-        </section>
-    
-        <section>
-            <h2>Customizable</h2>
-            <p>Easily adapt the code to fit the specifications of your own robot, making it suitable for various hardware configurations.</p>
-        </section>
-    
-        <section>
-            <h2>How to Use</h2>
-            <ol>
-                <li>Clone the repository to your local machine.</li>
-                <li>Install the required dependencies using <code>pip install -r requirements.txt</code>.</li>
-                <li>Change the server address to the IP address of the robot.</li>
-                <li>Start the Server in the <code>server</code> folder.</li>
-                <li>Start the <code>game.py</code> file.</li>
-                <li>Watch as the robot mirrors the movements of the virtual character in real-time!</li>
-            </ol>
-        </section>
-    
-        <section>
-            <h2>Contributing</h2>
-            <p>Contributions are welcome! Whether it's fixing bugs, adding new features, or improving documentation, feel free to submit pull requests.</p>
-        </section>
-    
+    <section>
+        <h2>Real-Time Interaction with Pygame and Robot</h2>
+        <p>Control a virtual 2D character using Pygame and see the corresponding movements in a connected physical robot.</p>
+    </section>
+
+    <section>
+        <h2>User-Friendly Interface</h2>
+        <p>Enjoy a simple and intuitive control interface for an engaging user experience.</p>
+    </section>
+
+    <section>
+        <h2>Customizable</h2>
+        <p>Easily adapt the code to fit your own robot's specifications, making it suitable for various hardware configurations.</p>
+    </section>
+
+    <section>
+        <h2>How to Use</h2>
+        <ol>
+            <li>Clone the repository to your local machine.</li>
+            <li>Install the required dependencies using <code>pip install -r requirements.txt</code>.</li>
+            <li>Change the server address to the IP address of the robot.</li>
+            <li>Start the Server in the <code>server</code> folder.</li>
+            <li>Start the <code>game.py</code> file.</li>
+            <li>Watch as the robot mirrors the movements of the virtual character in real-time!</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Contributing</h2>
+        <p>Contributions are welcome! Whether it's fixing bugs, adding new features, or improving documentation, feel free to submit pull requests.</p>
+    </section>
+
     <img src="{% static 'a.jpg' %}" alt="robotimg">
-{%endblock%}
+{% endblock %}
