@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
 {% block content %}
     <title>home</title>
+
+    <script>
+        if (!localStorage.getItem('messageShown')) {
+            alert("Hello User! If this is your first time using this website, please make sure to read the information page first. Enjoy!");
+            localStorage.setItem('messageShown', true);
+        }
+    </script>
+
     <h1>Actions</h1>
 
     <style>
@@ -44,7 +51,24 @@
             xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.send(message);
+
+            document.getElementById("message").value = "";
         }
+    </script>
+
+    <script>
+        // Button event listeners for robot movement and actions
+        var buttons = ["cameraBtn", "soundBtn", "shutdownBtn"];
+
+        buttons.forEach(function (btnId) {
+            document.getElementById(btnId).addEventListener("click", function () {
+                // Use Ajax to send a request to the server when the button is clicked
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", document.getElementById(btnId).parentNode.action, true);
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
+                xhr.send();
+            });
+        });
     </script>
 
     <script>
@@ -99,21 +123,6 @@
                 xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
                 xhr.send();
             }
-        });
-    </script>
-
-    <script>
-        // Button event listeners for robot movement and actions
-        var buttons = ["startBtn", "cameraBtn", "soundBtn", "shutdownBtn"];
-
-        buttons.forEach(function (btnId) {
-            document.getElementById(btnId).addEventListener("click", function () {
-                // Use Ajax to send a request to the server when the button is clicked
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", document.getElementById(btnId).parentNode.action, true);
-                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
-                xhr.send();
-            });
         });
     </script>
 {% endblock %}

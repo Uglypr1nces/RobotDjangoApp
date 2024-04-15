@@ -95,7 +95,5 @@ def sendmessage(request):
     if request.method == 'POST':
         message = request.body.decode('utf-8')
         print("Received message:", message)
-        return JsonResponse({'success': 'Message received successfully'})
         client("word"+message, server, port)
-    else:
-        return JsonResponse({'error': 'Only POST requests are supported'}, status=405)
+        return HttpResponse("")
