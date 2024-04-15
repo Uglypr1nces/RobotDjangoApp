@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .python_robotcontroller.video_reciever import start_video_server
 from .python_robotcontroller.game import start_robot
 from .python_robotcontroller.server.client import client
 import json
