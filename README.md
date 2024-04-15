@@ -6,7 +6,6 @@ The Django Robot Controller project is a web-based application designed to provi
 ![alt text](main_controller/static/a.jpg)
 
 ## Features
-- **Controller Support**: Seamlessly control your robot using game controllers for a more intuitive experience.
 - **Customizable Interface**: Easily adapt the control interface to suit the specifications of your robot.
 - **Real-time Feedback**: Receive instant feedback on your robot's status and sensor data.
 - **Responsive Design**: Access the controller interface from various devices, ensuring a responsive and adaptable experience.
@@ -14,8 +13,6 @@ The Django Robot Controller project is a web-based application designed to provi
 ## Requirements
 - Python 3.x
 - Django 3.x
-- Pygame 2.5.X
-- tkinter
 
 ## Setup
 1. Clone the repository:
@@ -29,7 +26,7 @@ The Django Robot Controller project is a web-based application designed to provi
 
 3. start project:
    ```bash
-   python manage.py runserver
+   python3 manage.py runserver
 
 4. Run Server on the robot:
    ```bash
