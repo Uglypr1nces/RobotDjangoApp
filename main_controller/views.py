@@ -2,10 +2,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .python_robotcontroller.game import start_robot
-from .python_robotcontroller.server.client import client
+from .client import client
+from .views import *
 import json
-import pygame
 
 # Global variables
 port = 8001
@@ -28,7 +27,7 @@ def settings(request):
 def forward(request):
     client("forward", server, port)
     return HttpResponse("")
-def backward(request):  
+def backward(request):
     client("backward", server, port)
     return HttpResponse("")
 def left(request):
