@@ -27,9 +27,9 @@ TEAMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-&7jjj5&t^hbl42jm(!vv9-rnu(piy!x(s4tyf(8$d@#$vpw2h%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['uglyprincess.pythonanywhere.com', 'localhost']
+ALLOWED_HOSTS = ['uglyprincess.pythonanywhere.com', 'localhost','127.0.0.1']
 
 # apps are the components of the project, and each app is a separate module that
 # can be reused in other projects. This is the list of all the apps that are
@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main_controller',
     'corsheaders'
-
 ]
 STATIC_URL = '/static/'
 
