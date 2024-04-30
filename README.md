@@ -10,9 +10,6 @@ The Django Robot Controller project is a web-based application designed to provi
 - **Real-time Feedback**: Receive instant feedback on your robot's status and sensor data.
 - **Responsive Design**: Access the controller interface from various devices, ensuring a responsive and adaptable experience.
 
-## Requirements
-- Python 3.x
-- Django 3.x
 
 ## Setup
 1. Clone the repository:
@@ -20,7 +17,7 @@ The Django Robot Controller project is a web-based application designed to provi
    git clone https://github.com/Uglypr1nces/robot-controller-django.git
    cd robot-controller-django
 
-2. Install Dependencies:
+2. Install Dependencies, if you get any errors you will have to install certain packages yourself:
    ```bash
     pip install -r requirements.txt
 
@@ -29,7 +26,7 @@ The Django Robot Controller project is a web-based application designed to provi
    python3 manage.py runserver
 
 4. Run Server on the robot:
-   ```bash
-   [needs to be added]
+
+   follow instructions on <a href="https://github.com/Uglypr1nces/piserver">here</a>
 
 
