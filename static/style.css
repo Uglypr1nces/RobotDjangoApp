@@ -1,0 +1,181 @@
+body{
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+label{
+  display: block;
+  margin: 20px 0 5px 0;
+}
+input
+{
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #000000;
+}
+input[type=submit]{
+  background-color: #000;
+  color: #c61c1c;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.container{
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+header{
+  background: #fff;
+  color: #000;
+  padding-top: 30px;
+  min-height: 70px;
+  border-bottom: #000 5px solid;
+}
+header a{
+  color: #000;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+header ul{
+  padding: 0;
+  margin: 0;
+}
+header li{
+  float: left;
+  display: inline;
+  padding: 0 20px 0 20px;
+}
+header #branding{
+  float: left;
+}
+header #branding h1{
+  margin: 0;
+}
+header nav{
+  float: right;
+  margin-top: 10px;
+}
+header .highlight, header .current a{
+  color: #000;
+  font-weight: bold;
+}
+header a:hover{
+  color: #000;
+  font-weight: bold;
+}
+header #branding img{
+  width: 100px;
+  height: 100px;
+}
+main{
+  float: left;
+  width: 100%;
+  padding: 20px 0 20px 0;
+}
+
+robotimg{
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  
+}
+/* CSS */
+button{
+  appearance: button;
+  background-color: #ffffff;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: block; /* Added property */
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  white-space: nowrap;
+  width: 20%;
+}
+
+button:after {
+  background-clip: padding-box;
+  background-color: #606060;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+button:main,
+button:focus {
+  user-select: auto;
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+button:disabled {
+  cursor: auto;
+}
+
+button:active {
+  border-width: 4px 0 0;
+  background: none;
+}
+
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 42px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  color: #7d7d7d;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  color: #2c2c2c;
+  margin-bottom: 10px;
+}
+
+ol {
+  margin-left: 20px;
+}
