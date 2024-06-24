@@ -3,8 +3,6 @@
 ## Overview
 The Django Robot Controller project is a web-based application designed to provide a user-friendly interface for controlling your robot. With support for controller input, this project allows you to effortlessly maneuver your robot and perform various actions remotely.
 
-![alt text](main_controller/static/a.jpg)
-
 ## Features
 - **Customizable Interface**: Easily adapt the control interface to suit the specifications of your robot.
 - **Real-time Feedback**: Receive instant feedback on your robot's status and sensor data.
@@ -24,6 +22,9 @@ The Django Robot Controller project is a web-based application designed to provi
 3. start project:
    ```bash
    python3 manage.py runserver
+
+
+![alt text](main_controller/static/a.jpg)
 
 4. Run Server on the robot:
 
