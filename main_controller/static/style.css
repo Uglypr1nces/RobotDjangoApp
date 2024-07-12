@@ -1,93 +1,87 @@
-body{
+body {
   background-color: #ffffff;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
-label{
+label {
   display: block;
   margin: 20px 0 5px 0;
 }
-input
-{
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #000000;
-}
-input[type=submit]{
-  background-color: #000;
-  color: #c61c1c;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-}
-.container{
+
+.container {
   width: 80%;
   margin: auto;
   overflow: hidden;
 }
-header{
+
+header {
   background: #fff;
   color: #000;
   padding-top: 30px;
   min-height: 70px;
   border-bottom: #000 5px solid;
 }
-header a{
+
+header a {
   color: #000;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 16px;
 }
-header ul{
+
+header ul {
   padding: 0;
   margin: 0;
 }
-header li{
+
+header li {
   float: left;
   display: inline;
   padding: 0 20px 0 20px;
 }
-header #branding{
+
+header #branding {
   float: left;
 }
-header #branding h1{
+
+header #branding h1 {
   margin: 0;
 }
-header nav{
+
+header nav {
   float: right;
   margin-top: 10px;
 }
-header .highlight, header .current a{
+
+header .highlight, header .current a {
   color: #000;
   font-weight: bold;
 }
-header a:hover{
+
+header a:hover {
   color: #000;
   font-weight: bold;
 }
-header #branding img{
+
+header #branding img {
   width: 100px;
   height: 100px;
 }
-main{
+
+main {
   float: left;
   width: 100%;
   padding: 20px 0 20px 0;
 }
 
-robotimg{
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  
+.pixelrobot {
+  float: right;
+  width: 50%;
 }
-/* CSS */
-button{
+
+button {
   appearance: button;
   background-color: #ffffff;
   border: solid transparent;
@@ -96,8 +90,8 @@ button{
   box-sizing: border-box;
   color: #000000;
   cursor: pointer;
-  display: block; /* Added property */
-  font-family: din-round,sans-serif;
+  display: block;
+  font-family: din-round, sans-serif;
   font-size: 15px;
   font-weight: 700;
   letter-spacing: .8px;
@@ -112,9 +106,9 @@ button{
   transform: translateZ(0);
   transition: filter .2s;
   user-select: none;
-  -webkit-user-select: none;
   white-space: nowrap;
   width: 20%;
+  position: relative;
 }
 
 button:after {
@@ -132,14 +126,12 @@ button:after {
   z-index: -1;
 }
 
-button:main,
 button:focus {
   user-select: auto;
 }
 
 button:hover:not(:disabled) {
   filter: brightness(1.1);
-  -webkit-filter: brightness(1.1);
 }
 
 button:disabled {
@@ -149,13 +141,6 @@ button:disabled {
 button:active {
   border-width: 4px 0 0;
   background: none;
-}
-
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
 }
 
 h1 {
@@ -179,3 +164,4 @@ p {
 ol {
   margin-left: 20px;
 }
+

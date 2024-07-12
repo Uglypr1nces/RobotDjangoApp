@@ -4,23 +4,30 @@
 {% block content %}
     <title>home</title>
 
-    <script>
-        if (!localStorage.getItem('messageShown')) {
-            alert("Hello User! If this is your first time using this website, please make sure to read the information page first. Enjoy!");
-            localStorage.setItem('messageShown', true);
-        }
-    </script>
-
     <h1>Actions</h1>
 
     <style>
         .pixelrobot {
             float: right;
-            width: 50%;          
+            width: 60%;  
+            margin-top: -60px;      
         }
+        #message {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: block;
+            background: #000000;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            }
+
     </style>
     
     <img class="pixelrobot" src="{% static 'rbot.png' %}">
+
+    <button type="button" id="movement">Key Ctrl</button>
 
     <!-- Camera form -->
     <form action="{% url 'camera' %}" method="post">
@@ -41,86 +48,62 @@
     <input type="text" id="message" name="message" placeholder="Enter a message">
 
     <!-- Send message button -->
-    <button onclick="sendmessage()">Send message</button>
+    <button onclick="sendmessage()">Send</button>
 
     <script>
+        if (!localStorage.getItem('messageShown')) {
+            alert("Hello User! If this is your first time using this website, please make sure to read the information page first. Enjoy!");
+            localStorage.setItem('messageShown', true);
+        }
+
+        let keyboardactive = false;
+
+        document.getElementById("movement").addEventListener("click", function () {
+            if (keyboardactive) {
+                alert("Keyboard Control Deactivated");
+                keyboardactive = false;
+                deactivatekeyboard();
+            } else {
+                alert("Keyboard Control Activated");
+                keyboardactive = true;
+                activatekeyboard();
+            }
+        });
+
         function sendmessage() {
             var message = document.getElementById("message").value;
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "{% url 'sendmessage' %}", true);
-            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
+            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.send(message);
-
+            xhr.send("message=" + encodeURIComponent(message));
             document.getElementById("message").value = "";
         }
-    </script>
 
-    <script>
-        // Button event listeners for robot movement and actions
         var buttons = ["cameraBtn", "soundBtn", "shutdownBtn"];
 
         buttons.forEach(function (btnId) {
             document.getElementById(btnId).addEventListener("click", function () {
-                // Use Ajax to send a request to the server when the button is clicked
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", document.getElementById(btnId).parentNode.action, true);
-                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
                 xhr.send();
             });
         });
-    </script>
 
-    <script>
-        // Keyboard event listener for robot movement
         document.body.addEventListener("keydown", (ev) => {
-            if (ev.key === "w") {
+            if (keyboardactive) {
                 var xhr = new XMLHttpRequest();
-                xhr.open("POST", "{% url 'forward' %}", true);
-                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
-                xhr.send();
-            }
-       
-            if (ev.key === "s") {
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "{% url 'backward' %}", true);
-                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
-                xhr.send();
-            }
-            if (ev.key === "a") {
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "{% url 'left' %}", true);
-                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
-                xhr.send();
-            }
-            if (ev.key === "d") {
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "{% url 'right' %}", true);
-                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
-                xhr.send();
-            }
-            if (ev.key === "e") {
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "{% url 'camera_left' %}", true);
-                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
-                xhr.send();
-            }
-            if (ev.key === "q") {
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "{% url 'camera_right' %}", true);
-                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
-                xhr.send();
-            }
-            if (ev.key === "r") {
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "{% url 'camera_up' %}", true);
-                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
-                xhr.send();
-            }
-            if (ev.key === "f") {
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "{% url 'camera_down' %}", true);
-                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
+                if (ev.key === "w") xhr.open("POST", "{% url 'forward' %}", true);
+                else if (ev.key === "s") xhr.open("POST", "{% url 'backward' %}", true);
+                else if (ev.key === "a") xhr.open("POST", "{% url 'left' %}", true);
+                else if (ev.key === "d") xhr.open("POST", "{% url 'right' %}", true);
+                else if (ev.key === "e") xhr.open("POST", "{% url 'camera_left' %}", true);
+                else if (ev.key === "q") xhr.open("POST", "{% url 'camera_right' %}", true);
+                else if (ev.key === "r") xhr.open("POST", "{% url 'camera_up' %}", true);
+                else if (ev.key === "f") xhr.open("POST", "{% url 'camera_down' %}", true);
+
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
                 xhr.send();
             }
         });
