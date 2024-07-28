@@ -1,18 +1,15 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import HttpResponse
-from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .client import client
 from time import sleep
-from .views import *
 import json
-
 
 # Global variables
 port = 8001
 server = "0.0.0.0"
 
-#pages
+# Pages
 def index(request):
     return render(request, 'home.html')
 
@@ -25,25 +22,24 @@ def information(request):
 def settings(request):
     return render(request, 'settings.html')
 
-#robot movement
+# Robot movement
 def forward(request):
     client("forward", server, port)
-    sleep(1)
-    return HttpResponse("")
-def backward(request):
-    client("backward", server, port)
-    sleep(1)
-    return HttpResponse("")
-def left(request):
-    client("left", server, port)
-    sleep(1)
-    return HttpResponse("")
-def right(request):
-    client("right", server, port)
-    sleep(1)
     return HttpResponse("")
 
-#camera movement
+def backward(request):
+    client("backward", server, port)
+    return HttpResponse("")
+
+def left(request):
+    client("left", server, port)
+    return HttpResponse("")
+
+def right(request):
+    client("right", server, port)
+    return HttpResponse("")
+
+# Camera movement
 def camera_left(request):
     client("camera_left", server, port)
     sleep(1)
@@ -65,12 +61,11 @@ def camera_down(request):
     return HttpResponse("")
 
 def camera(request):
-    #start_video_server()   # I accidently broke the camera
+    # start_video_server()   # I accidentally broke the camera
     print("Opening camera..")
     return HttpResponse("")
 
-#robot features
-
+# Robot features
 def sound(request):
     print("Playing sound..")
     client("alarm_sound", server, port)
@@ -80,6 +75,7 @@ def shutdown(request):
     client("over_sound", server, port)
     return HttpResponse("")
 
+@csrf_exempt
 def savesettings(request):
     global port
     global server
@@ -92,13 +88,18 @@ def savesettings(request):
         try:
             client("test", server, port)
         except Exception as e:
-            print(f"Cause of error: {e}")
+            print(f"Error: {e}")
 
     return HttpResponse("")
 
+@csrf_exempt
 def sendmessage(request):
     if request.method == 'POST':
         message = request.body.decode('utf-8')
         print("Received message:", message)
-        client("word"+message, server, port)
+        client("word" + message, server, port)
         return HttpResponse("")
+
+# Ensure the server is listening when the Django app starts
+if __name__ == "__main__":
+    socket_thread.start()
