@@ -14,7 +14,7 @@ urlpatterns = [
     path('sound/', views.sound, name='sound'),
     path('shutdown/', views.shutdown, name='shutdown'),
     path('savesettings/',views.savesettings,name = "savesettings"),
-    path("sendmessage/",views.sendmessage,name = "sendmessage"),
+    path("send_command/",views.send_command,name = "send_command"),
     #robot bodymovement
     path("forward/",views.forward,name = "forward"),
     path("backward/",views.backward,name = "backward"),

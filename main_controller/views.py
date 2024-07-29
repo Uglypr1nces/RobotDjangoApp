@@ -1,13 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from .client import client
+from .python_robotcontroller.server.client import RobotClient
 from time import sleep
+import threading
 import json
 
 # Global variables
 port = 8001
 server = "0.0.0.0"
+
+RobotClient = RobotClient(server, port)
 
 # Pages
 def index(request):
@@ -24,39 +27,39 @@ def settings(request):
 
 # Robot movement
 def forward(request):
-    client("forward", server, port)
+    RobotClient.send_message("forward")
     return HttpResponse("")
 
 def backward(request):
-    client("backward", server, port)
+    RobotClient.send_message("backward")
     return HttpResponse("")
 
 def left(request):
-    client("left", server, port)
+    RobotClient.send_message("left")
     return HttpResponse("")
 
 def right(request):
-    client("right", server, port)
+    RobotClient.send_message("right")
     return HttpResponse("")
 
 # Camera movement
 def camera_left(request):
-    client("camera_left", server, port)
+    RobotClient.send_message("camera_left")
     sleep(1)
     return HttpResponse("")
 
 def camera_right(request):
-    client("camera_right", server, port)
+    RobotClient.send_message("camera_right")
     sleep(1)
     return HttpResponse("")
 
 def camera_up(request):
-    client("camera_up", server, port)
+    RobotClient.send_message("camera_up")
     sleep(1)
     return HttpResponse("")
 
 def camera_down(request):
-    client("camera_down", server, port)
+    RobotClient.send_message("camera_down")
     sleep(1)
     return HttpResponse("")
 
@@ -68,11 +71,11 @@ def camera(request):
 # Robot features
 def sound(request):
     print("Playing sound..")
-    client("alarm_sound", server, port)
+    RobotClient.send_message("alarm_sound")
     return HttpResponse("")
 
 def shutdown(request):
-    client("over_sound", server, port)
+    RobotClient.send_message("over_sound")
     return HttpResponse("")
 
 @csrf_exempt
@@ -86,20 +89,19 @@ def savesettings(request):
         port = int(data.get('port'))
         print("Saving settings... Robot IP:", server, "Port:", port)
         try:
-            client("test", server, port)
+            RobotClient.set_server(server, port)
+            RobotClient.send_message("test")
         except Exception as e:
             print(f"Error: {e}")
 
     return HttpResponse("")
 
 @csrf_exempt
-def sendmessage(request):
+def send_command(request):
     if request.method == 'POST':
         message = request.body.decode('utf-8')
         print("Received message:", message)
-        client("word" + message, server, port)
+        RobotClient.send_message("word" + message)
         return HttpResponse("")
 
-# Ensure the server is listening when the Django app starts
-if __name__ == "__main__":
-    socket_thread.start()
+
