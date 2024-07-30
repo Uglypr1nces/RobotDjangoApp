@@ -6,8 +6,15 @@ class RobotClient:
         self.HEADER = 64
         self.FORMAT = "utf-8"
 
-    def connect(self):
+    def connect(self):  
         self.client.connect(self.ADDR)
+        print("Connected to", self.ADDR)
+    
+    def disconnect(self):
+        self.send_message("!disc")
+        self.client.close()
+        print("Disconnected from", self.ADDR)
+        self.ADDR = ""
 
     def set_server(self, server, port):
         self.ADDR = (server, port)
@@ -19,9 +26,8 @@ class RobotClient:
             try:
                 msg_length = self.client.recv(self.HEADER).decode(self.FORMAT)
                 if msg_length:
-                    msg_length = int(msg_length)
-                    msg = self.client.recv(msg_length).decode(self.FORMAT)
-                    print(f"[{self.ADDR}] {msg}")
+                    msg = self.client.recv(64).decode(self.FORMAT)
+                    print(f"{msg} from {self.ADDR}")
             except ConnectionResetError:
                 print(f"Connection with {self.ADDR} was forcibly closed.")
             except socket.error as e:

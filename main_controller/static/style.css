@@ -1,3 +1,7 @@
+                            /* General */
+/* ---------------------------------------------------------------------- */
+
+
 body {
   background-color: #ffffff;
   font-family: Arial, sans-serif;
@@ -8,12 +12,6 @@ body {
 label {
   display: block;
   margin: 20px 0 5px 0;
-}
-
-.container {
-  width: 80%;
-  margin: auto;
-  overflow: hidden;
 }
 
 header {
@@ -74,11 +72,6 @@ main {
   float: left;
   width: 100%;
   padding: 20px 0 20px 0;
-}
-
-.pixelrobot {
-  float: right;
-  width: 50%;
 }
 
 button {
@@ -163,5 +156,44 @@ p {
 
 ol {
   margin-left: 20px;
+}
+
+
+                            /* HOME */
+/* ---------------------------------------------------------------------- */
+
+.pixelrobot {
+  float: right;
+  width: 50%;
+}
+
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+                            /* ABOUT */
+/* ---------------------------------------------------------------------- */
+
+
+
+
+
+                            /* SETTINGS */
+/* ---------------------------------------------------------------------- */
+
+
+/* DIVS */
+
+.LeftContainer {
+  float: left;
+  height: 100px;
+  width: 100px;
+
+  background-color: #000;
+  color: #9e4646;
+  z-index: 1;
 }
 

@@ -90,11 +90,16 @@ def savesettings(request):
         print("Saving settings... Robot IP:", server, "Port:", port)
         try:
             RobotClient.set_server(server, port)
+            RobotClient.connect()
+            RobotClient.listen()
             RobotClient.send_message("test")
+            context = {
+                'Status': 'Connected to the robot!',
+            }
         except Exception as e:
             print(f"Error: {e}")
 
-    return HttpResponse("")
+    return render(request, 'settings.html', context)
 
 @csrf_exempt
 def send_command(request):

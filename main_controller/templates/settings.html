@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}Settings{% endblock %}
 {% block content %}
     <title>Settings</title>
+
     <h1>Settings</h1>
-    
+
+    <div class="ConnectionStatus">
+
+    </div>
+
     <h2>Robot Connection</h2>
+
     <label for="robotIP">Robot IP Address:</label>
     <input type="text" id="robotIP" name="robotIP" placeholder="Enter IP address">
 
@@ -12,6 +19,23 @@
     <input type="number" id="port" name="port" placeholder="Enter port number">
 
     <button onclick="saveSettings()">Save</button>
+{% endblock %}
+
+{% block LeftContent %}
+
+<div class="ConnectionStatus">
+    <h2>Connection Status</h2>
+    <p id="connectionStatus">Not connected</p>
+</div>
+
+{% endblock %}
+
+{% block RightContent %}
+
+
+
+{% endblock %}
+
 
     <script>
         function saveSettings() {
@@ -27,5 +51,4 @@
         }
     </script>
 
-{% endblock %}
 
