@@ -1,41 +1,52 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Settings{% endblock %}
-{% block content %}
-    <title>Settings</title>
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=7.0">
+    <link rel="stylesheet" href="{% static 'settings.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 
-    <h1>Settings</h1>
-
-    <div class="ConnectionStatus">
-
-    </div>
-
-    <h2>Robot Connection</h2>
-
-    <label for="robotIP">Robot IP Address:</label>
-    <input type="text" id="robotIP" name="robotIP" placeholder="Enter IP address">
-
-    <label for="port">Port Number:</label>
-    <input type="number" id="port" name="port" placeholder="Enter port number">
-
-    <button onclick="saveSettings()">Save</button>
 {% endblock %}
 
 {% block LeftContent %}
-
-<div class="ConnectionStatus">
+<style>
+    .ConnectionStatus1 {
+    padding-top: 5em;
+    width: 20%;
+}
+</style>
+<div class="ConnectionStatus1">
     <h2>Connection Status</h2>
     <p id="connectionStatus">Not connected</p>
 </div>
-
 {% endblock %}
 
-{% block RightContent %}
-
-
-
+{% block content %}
+    <title>Settings</title>
+    <h1>Robot Connection</h1>
+    <div class="MiddleContent">
+        <label for="robotIP">Robot IP Address:</label>
+        <input type="text" id="robotIP" name="robotIP" placeholder="Enter IP address">
+    
+        <label for="port">Port Number:</label>
+        <input type="number" id="port" name="port" placeholder="Enter port number">
+    
+        <button onclick="saveSettings()">Save</button>
+    </div>
 {% endblock %}
 
+{% block RightContainer %}
+<style>
+    .ConnectionStatus2 {
+    padding-top: 5em;
+    width: 20%;
+}
+</style>
+<div class="ConnectionStatus2">
+    <h2>Connection Status1</h2>
+    <p id="connectionStatu">Not connected</p>
+</div>
+{% endblock %}
 
     <script>
         function saveSettings() {

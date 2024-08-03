@@ -2,11 +2,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% block head %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=7.0">
     <title>{% block title %}Robot Control Panel{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    </head>
+    {% endblock %}
+
+    <style>
+        .MainContent{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
     <body>
         <header>
             <div class="container">
@@ -24,15 +33,16 @@
         </header>
 
         <main>
-            <div class="container">
-                {% block content %}{% endblock %}
-            </div>
-            <div class="LeftContainer">
-                {% block LeftContent %}{% endblock %}
-            </div>
-
-            <div class="RightContainer">
-                {% block RightContainer %}{% endblock %}
+            <div class="MainContent">
+                <div class="LeftContainer">
+                    {% block LeftContent %}{% endblock %}
+                </div>
+                <div class="container">
+                    {% block content %}{% endblock %}
+                </div>
+                <div class="RightContainer">
+                    {% block RightContainer %}{% endblock %}
+                </div>
             </div>
         </main>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
