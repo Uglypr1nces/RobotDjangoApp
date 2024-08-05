@@ -1,110 +1,44 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=7.0">
+    <link rel="stylesheet" href="{% static 'home/home.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="{% static 'home/home.js' %}"></script>
+{% endblock %}
+
 {% block content %}
     <title>home</title>
-
     <h1>Actions</h1>
 
-    <style>
-        .pixelrobot {
-            float: right;
-            width: 60%;  
-            margin-top: -60px;      
-        }
-        #message {
-            width: 100%;
-            padding: 15px;
-            margin: 5px 0 22px 0;
-            display: block;
-            background: #000000;
-            color: white;
-            border: none;
-            border-radius: 15px;
-            }
+    <div class="controlls">
+        <div id="pixelRobot">
+            <img class="pixelrobot" src="{% static 'robot.png' %}" alt="Robot">
+        </div>
+        <div id="percantage">
+            <p>32</p>
+        </div>
+        <img id="battery_arrow" src="{% static 'battery_arrow.png' %}" alt="Battery Arrow" style="display: none;">    
+        <button type="button" id="movement">Key Ctrl</button>
+        <button type="button" id="robotinformation">Info</button>
 
-    </style>
-    
-    <img class="pixelrobot" src="{% static 'rbot.png' %}">
+        <!-- Sound form -->
+        <form action="{% url 'sound' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" id="soundBtn">Sound</button>
+        </form>
 
-    <button type="button" id="movement">Key Ctrl</button>
+        <!-- Shutdown form -->
+        <form action="{% url 'shutdown' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" id="shutdownBtn">Shutdown</button>
+        </form>
 
-    <!-- Camera form -->
-    <form action="{% url 'camera' %}" method="post">
-        <button type="button" id="cameraBtn">Camera</button>
-    </form>
+        <!-- Message input -->
+        <input type="text" id="message" name="message" placeholder="Enter a message">
 
-    <!-- Sound form -->
-    <form action="{% url 'sound' %}" method="post">
-        <button type="button" id="soundBtn">Sound</button>
-    </form>
-
-    <!-- Shutdown form -->
-    <form action="{% url 'shutdown' %}" method="post">
-        <button type="button" id="shutdownBtn">Shutdown</button>
-    </form>
-
-    <!-- Message input -->
-    <input type="text" id="message" name="message" placeholder="Enter a message">
-
-    <!-- Send message button -->
-    <button onclick="sendmessage()">Send</button>
-
-    <script>
-        if (!localStorage.getItem('messageShown')) {
-            alert("Hello User! If this is your first time using this website, please make sure to read the information page first. Enjoy!");
-            localStorage.setItem('messageShown', true);
-        }
-
-        let keyboardactive = false;
-
-        document.getElementById("movement").addEventListener("click", function () {
-            if (keyboardactive) {
-                alert("Keyboard Control Deactivated");
-                keyboardactive = false;
-                deactivatekeyboard();
-            } else {
-                alert("Keyboard Control Activated");
-                keyboardactive = true;
-                activatekeyboard();
-            }
-        });
-
-        function sendmessage() {
-            var message = document.getElementById("message").value;
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "{% url 'send_command' %}", true);
-            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.send("message=" + encodeURIComponent(message));
-            document.getElementById("message").value = "";
-        }
-
-        var buttons = ["cameraBtn", "soundBtn", "shutdownBtn"];
-
-        buttons.forEach(function (btnId) {
-            document.getElementById(btnId).addEventListener("click", function () {
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", document.getElementById(btnId).parentNode.action, true);
-                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
-                xhr.send();
-            });
-        });
-
-        document.body.addEventListener("keydown", (ev) => {
-            if (keyboardactive) {
-                var xhr = new XMLHttpRequest();
-                if (ev.key === "w") xhr.open("POST", "{% url 'forward' %}", true);
-                else if (ev.key === "s") xhr.open("POST", "{% url 'backward' %}", true);
-                else if (ev.key === "a") xhr.open("POST", "{% url 'left' %}", true);
-                else if (ev.key === "d") xhr.open("POST", "{% url 'right' %}", true);
-                else if (ev.key === "e") xhr.open("POST", "{% url 'camera_left' %}", true);
-                else if (ev.key === "q") xhr.open("POST", "{% url 'camera_right' %}", true);
-                else if (ev.key === "r") xhr.open("POST", "{% url 'camera_up' %}", true);
-                else if (ev.key === "f") xhr.open("POST", "{% url 'camera_down' %}", true);
-
-                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
-                xhr.send();
-            }
-        });
-    </script>
+        <!-- Send message button -->
+        <button type="button" onclick="sendmessage()">Send</button>
+    </div>
 {% endblock %}
