@@ -1,95 +1,111 @@
-/*                           General                           */
-/*------------------------------------------------------------*/
-body{
+/* General Styles */
+body {
   background-color: #ffffff;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
-label{
+label {
   display: block;
   margin: 20px 0 5px 0;
 }
-input
-{
+
+input {
   width: 100%;
   padding: 10px;
   margin: 5px 0 22px 0;
   display: inline-block;
   border: none;
   background: #000000;
+  color: #ffffff;
 }
-input[type=submit]{
-  background-color: #000;
+
+input[type="submit"] {
+  background-color: #000000;
   color: #c61c1c;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
 }
-.container{
-  width: 80%;
-  margin: auto;
-  overflow: hidden;
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
-header{
-  background: #fff;
-  color: #000;
+
+/* Header Styles */
+header {
+  background: #ffffff;
+  color: #000000;
   padding-top: 30px;
   min-height: 70px;
-  border-bottom: #000 5px solid;
+  border-bottom: 5px solid #000000;
 }
-header a{
-  color: #000;
+
+header a {
+  color: #000000;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 16px;
 }
-header ul{
+
+header ul {
   padding: 0;
   margin: 0;
+  list-style: none;
 }
-header li{
+
+header li {
   float: left;
   display: inline;
-  padding: 0 20px 0 20px;
+  padding: 0 20px;
 }
-header #branding{
+
+header #branding {
   float: left;
 }
-header #branding h1{
+
+header #branding h1 {
   margin: 0;
 }
-header nav{
+
+header nav {
   float: right;
   margin-top: 10px;
 }
-header .highlight, header .current a{
-  color: #000;
+
+header .highlight, header .current a {
+  color: #000000;
   font-weight: bold;
 }
-header a:hover{
-  color: #000;
+
+header a:hover {
+  color: #000000;
   font-weight: bold;
 }
-header #branding img{
+
+header #branding img {
   width: 100px;
   height: 100px;
 }
-main{
+
+/* Main Content Styles */
+main {
   float: left;
   width: 100%;
-  padding: 20px 0 20px 0;
+  padding: 20px 0;
 }
 
-robotimg{
+.robot-img {
   width: 100%;
   height: 100%;
   padding: 20px;
-  
 }
-/* CSS */
-button{
+
+/* Button Styles */
+button {
   appearance: button;
   background-color: #ffffff;
   border: solid transparent;
@@ -98,8 +114,8 @@ button{
   box-sizing: border-box;
   color: #000000;
   cursor: pointer;
-  display: block; /* Added property */
-  font-family: din-round,sans-serif;
+  display: block; /* Ensure buttons are block elements */
+  font-family: din-round, sans-serif;
   font-size: 15px;
   font-weight: 700;
   letter-spacing: .8px;
@@ -117,6 +133,7 @@ button{
   -webkit-user-select: none;
   white-space: nowrap;
   width: 20%;
+  position: relative; /* Ensure button pseudo-element is positioned correctly */
 }
 
 button:after {
@@ -145,7 +162,7 @@ button:hover:not(:disabled) {
 }
 
 button:disabled {
-  cursor: auto;
+  cursor: not-allowed;
 }
 
 button:active {
@@ -153,16 +170,10 @@ button:active {
   background: none;
 }
 
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
+/* Typography */
 h1 {
   font-size: 42px;
-  color: #333;
+  color: #333333;
   margin-bottom: 20px;
 }
 
@@ -180,40 +191,4 @@ p {
 
 ol {
   margin-left: 20px;
-}
-
-/*                             Home                           */
-/*------------------------------------------------------------*/
-
-.pixelrobot {
-  float: right;
-  width: 60%;
-  position: relative;
-}
-.controlls {
-  z-index: 2;
-  position: relative;
-}
-#battery_arrow {
-  position: absolute;
-  z-index: 3;
-  width: 20%; /* Adjust the size as needed */
-}
-#message {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: block;
-  background: #000000;
-  color: white;
-  border: none;
-  border-radius: 15px;
-}
-#percantage {
-  position: absolute;
-  z-index: 3;
-  top: 0;
-  left: 0;
-  font-size: 20px;
-  color: white;
 }

@@ -2,43 +2,43 @@
 {% load static %}
 {% block head %}
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=7.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'home/home.css' %}">
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <script src="{% static 'home/home.js' %}"></script>
 {% endblock %}
 
 {% block content %}
-    <title>home</title>
+    <title>Home</title>
     <h1>Actions</h1>
 
-    <div class="controlls">
-        <div id="pixelRobot">
-            <img class="pixelrobot" src="{% static 'robot.png' %}" alt="Robot">
+    <div class="controls">
+        <div id="pixel-robot-container">
+            <img class="pixel-robot" src="{% static 'robot.png' %}" alt="Robot">
         </div>
-        <div id="percantage">
+        <div id="percentage">
             <p>32</p>
         </div>
-        <img id="battery_arrow" src="{% static 'battery_arrow.png' %}" alt="Battery Arrow" style="display: none;">    
-        <button type="button" id="movement">Key Ctrl</button>
-        <button type="button" id="robotinformation">Info</button>
+        <img id="battery-arrow" src="{% static 'battery_arrow.png' %}" alt="Battery Arrow" style="display: none;">    
+        <button type="button" id="movement-control">Key Ctrl</button>
+        <button type="button" id="robot-info">Info</button>
 
         <!-- Sound form -->
         <form action="{% url 'sound' %}" method="post">
             {% csrf_token %}
-            <button type="submit" id="soundBtn">Sound</button>
+            <button type="submit" id="sound-btn">Sound</button>
         </form>
 
         <!-- Shutdown form -->
         <form action="{% url 'shutdown' %}" method="post">
             {% csrf_token %}
-            <button type="submit" id="shutdownBtn">Shutdown</button>
+            <button type="submit" id="shutdown-btn">Shutdown</button>
         </form>
 
         <!-- Message input -->
-        <input type="text" id="message" name="message" placeholder="Enter a message">
+        <input type="text" id="message-input" name="message" placeholder="Enter a message">
 
         <!-- Send message button -->
-        <button type="button" onclick="sendmessage()">Send</button>
+        <button type="button" onclick="sendMessage()">Send</button>
     </div>
 {% endblock %}

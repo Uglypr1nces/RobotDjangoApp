@@ -4,50 +4,48 @@
 <head>
     {% block head %}
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=7.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Robot Control Panel{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     {% endblock %}
-
     <style>
-        .MainContent{
+        .main-content {
             display: flex;
             justify-content: space-between;
         }
     </style>
 </head>
-    <body>
-        <header>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><a href="{% url 'home' %}">Robot Control Panel</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'information' %}">Information</a></li>
+                    <li><a href="{% url 'settings' %}">Settings</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-content">
+            <div class="left-container">
+                {% block left_content %}{% endblock %}
+            </div>
             <div class="container">
-                <div id="branding">
-                    <h1><a href="{% url 'home' %}">Robot Control Panel</a></h1>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="{% url 'home' %}">Home</a></li>
-                        <li><a href="{% url 'information' %}">Information</a></li>
-                        <li><a href="{% url 'settings' %}">Settings</a></li>
-                    </ul>
-                </nav>
+                {% block content %}{% endblock %}
             </div>
-        </header>
+            <div class="right-container">
+                {% block right_container %}{% endblock %}
+            </div>
+        </div>
+    </main>
 
-        <main>
-            <div class="MainContent">
-                <div class="LeftContainer">
-                    {% block LeftContent %}{% endblock %}
-                </div>
-                <div class="container">
-                    {% block content %}{% endblock %}
-                </div>
-                <div class="RightContainer">
-                    {% block RightContainer %}{% endblock %}
-                </div>
-            </div>
-        </main>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
-
-

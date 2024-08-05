@@ -24,7 +24,7 @@ The Django Robot Controller project is a web-based application designed to provi
    python3 manage.py runserver
 
 
-![alt text](main_controller/static/a.jpg)
+![alt text](/static/a.jpg)
 
 4. Run Server on the robot:
 

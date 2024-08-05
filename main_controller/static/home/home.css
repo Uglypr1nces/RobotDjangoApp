@@ -1,35 +1,39 @@
-  /*                             Home                           */
-  /*------------------------------------------------------------*/
-  
-  .pixelrobot {
-    float: right;
-    width: 60%;
-    position: relative;
-  }
-  .controlls {
-    z-index: 2;
-    position: relative;
-  }
-  #battery_arrow {
-    position: absolute;
-    z-index: 3;
-    width: 20%; 
-  }
-  #message {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: block;
-    background: #000000;
-    color: white;
-    border: none;
-    border-radius: 15px;
-  }
-  #percantage {
-    position: absolute;
-    z-index: 3;
-    top: 0;
-    left: 0;
-    font-size: 20px;
-    color: white;
-  }
+/*                             Home                           */
+/*------------------------------------------------------------*/
+
+.pixel-robot {
+  float: right;
+  width: 60%;
+  position: relative;
+}
+
+.controls {
+  z-index: 2;
+  position: relative;
+}
+
+#battery-arrow {
+  position: absolute;
+  z-index: 3;
+  width: 20%; /* Adjust the size as needed */
+}
+
+#message-input {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: block;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+}
+
+#percentage {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  font-size: 20px;
+  color: #fff;
+}

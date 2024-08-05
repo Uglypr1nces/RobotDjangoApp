@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+{% endblock %}
+
 {% block content %}
-
-    <title>Robot Control Tutorial</title>
-
     <div class="container">
         <h1>Welcome to Your Raspberry Pi Robot Control Tutorial!</h1>
 

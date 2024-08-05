@@ -2,30 +2,22 @@
 {% load static %}
 {% block head %}
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=7.0">
-    <link rel="stylesheet" href="{% static 'settings.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'settings/settings.css' %}">
     <link rel="stylesheet" href="{% static 'style.css' %}">
-
+    <script src="{% static 'settings/settings.js' %}"></script>
 {% endblock %}
 
-{% block LeftContent %}
-<style>
-    .ConnectionStatus1 {
-    padding-top: 8em;
-    padding-left: 2em;
-    width: 20%;
-}
-</style>
-<div class="ConnectionStatus1">
+{% block left_content %}
+<div class="connection-status">
     <h2>Connection Status</h2>
     <p id="connectionStatus">Not connected</p>
 </div>
 {% endblock %}
 
 {% block content %}
-    <title>Settings</title>
     <h1>Robot Connection</h1>
-    <div class="MiddleContent">
+    <div class="middle-content">
         <label for="robotIP">Robot IP Address:</label>
         <input type="text" id="robotIP" name="robotIP" placeholder="Enter IP address">
     
@@ -34,40 +26,11 @@
     
         <button onclick="saveSettings()">Save</button>
     </div>
-    <style>
-        .MiddleContent {
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    </style>
 {% endblock %}
 
-{% block RightContainer %}
-<style>
-    .ConnectionStatus2 {
-    padding-top: 8em;
-    width: 20%;
-}
-</style>
-<div class="ConnectionStatus2">
-    <h2>Connection Status1</h2>
-    <p id="connectionStatu">Not connected</p>
+{% block right_content %}
+<div class="connection-status">
+    <h2>Connection Status</h2>
+    <p id="connectionStatus">Not connected</p>
 </div>
 {% endblock %}
-
-    <script>
-        function saveSettings() {
-            var robotIP = document.getElementById("robotIP").value;
-            var port = document.getElementById("port").value;
-
-            // Use Ajax to send a request to the server when the button is clicked
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "{% url 'savesettings' %}", true);
-            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Add CSRF token
-            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            xhr.send(JSON.stringify({ robotIP: robotIP, port: port }));
-        }
-    </script>
-
-
