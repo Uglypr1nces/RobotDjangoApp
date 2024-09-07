@@ -1,7 +1,7 @@
 # Django Robot Controller Project
 
 ## Overview
-The Django Robot Controller project is a web-based application designed to provide a user-friendly interface for controlling your robot. With support for controller input, this project allows you to effortlessly maneuver your robot and perform various actions remotely.
+This project is a web-based application designed to provide a user-friendly interface for controlling your PicarX. With support for keyboard input, this project allows you to effortlessly maneuver your robot and perform various actions remotely.
 
 ## Features
 - **Customizable Interface**: Easily adapt the control interface to suit the specifications of your robot.
@@ -23,11 +23,9 @@ The Django Robot Controller project is a web-based application designed to provi
    ```bash
    python3 manage.py runserver
 
-
-![alt text](/static/a.jpg)
-
 4. Run Server on the robot:
 
    follow instructions on <a href="https://github.com/Uglypr1nces/piserver">here</a>
 
 
+![alt text](/static/a.jpg)
